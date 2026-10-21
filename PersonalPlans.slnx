@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PersonalPlans.Api/PersonalPlans.Api.csproj" />
+  <Project Path="PersonalPlans.Core/PersonalPlans.Core.csproj" />
+  <Project Path="PersonalPlans.Infrastructure/PersonalPlans.Infrastructure.csproj" />
+  <Project Path="PersonalPlans.Services/PersonalPlans.Services.csproj" />
+</Solution>

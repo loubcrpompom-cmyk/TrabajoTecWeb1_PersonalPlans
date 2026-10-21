@@ -1,0 +1,15 @@
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\bin\Debug\net9.0\PersonalPlans.Services.deps.json
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\bin\Debug\net9.0\PersonalPlans.Services.dll
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\bin\Debug\net9.0\PersonalPlans.Services.pdb
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\bin\Debug\net9.0\PersonalPlans.Core.dll
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\bin\Debug\net9.0\PersonalPlans.Core.pdb
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.csproj.AssemblyReference.cache
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.AssemblyInfoInputs.cache
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.AssemblyInfo.cs
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.csproj.CoreCompileInputs.cache
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\Personal.D123F686.Up2Date
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.dll
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\refint\PersonalPlans.Services.dll
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\PersonalPlans.Services.pdb
+C:\Users\LURDES\Desktop\TecWebI\PersonalPlans\PersonalPlans.Services\obj\Debug\net9.0\ref\PersonalPlans.Services.dll

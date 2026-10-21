@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace PersonalPlans.Core.Entities;
+
+public class User
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; } = string.Empty;
+
+    public string Email { get; set; } = string.Empty;
+
+    // Stores the password hash, never the plain-text password.
+    public string PasswordHash { get; set; } = string.Empty;
+
+    // Expected values: User or Administrator.
+    public string Role { get; set; } = "User";
+
+    public bool IsActive { get; set; } = true;
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
