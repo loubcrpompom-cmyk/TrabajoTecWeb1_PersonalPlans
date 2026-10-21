@@ -1,4 +1,9 @@
 
+using Microsoft.EntityFrameworkCore;
+using PersonalPlans.Infrastructure.Persistence;
+using PersonalPlans.Core.Interfaces;
+using PersonalPlans.Infrastructure.Repositories;
+
 namespace PersonalPlans.Api
 {
     public class Program
@@ -7,11 +12,33 @@ namespace PersonalPlans.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var connectionString = builder.Configuration
+                .GetConnectionString("DefaultConnection");
 
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException(
+                    "The DefaultConnection connection string is missing."
+                );
+            }
+
+            builder.Services.AddDbContext<PersonalPlansContext>(options =>
+                options.UseMySql(
+                    connectionString,
+                    ServerVersion.AutoDetect(connectionString)
+                )
+            );
+
+            // Add services to the container.
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+            builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            builder.Services.AddScoped<IRecommendationRepository, RecommendationRepository>();
+            builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+
 
             var app = builder.Build();
 
@@ -22,9 +49,7 @@ namespace PersonalPlans.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
 
             app.MapControllers();
 

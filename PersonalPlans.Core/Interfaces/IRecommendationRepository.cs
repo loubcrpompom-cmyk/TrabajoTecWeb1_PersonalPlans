@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonalPlans.Core.Interfaces
+
+using PersonalPlans.Core.Entities;
+
+namespace PersonalPlans.Core.Interfaces;
+
+public interface IRecommendationRepository
 {
-    internal class IRecommendationRepository
-    {
-    }
+    Task<IEnumerable<Recommendation>> GetByUserIdAsync(int userId);
+
+    Task<Recommendation?> GetByIdAsync(int id);
+
+    Task<Recommendation> CreateAsync(Recommendation recommendation);
 }
