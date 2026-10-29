@@ -1,0 +1,670 @@
+{
+  "info": {
+    "name": "PersonalPlans - CU-01 a CU-08",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5002"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "activityId",
+      "value": "1"
+    },
+    {
+      "key": "recommendationId",
+      "value": "1"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "CU-01 Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        },
+        "description": "Creates a regular user. Password is plain text only because this academic project requirement explicitly says so.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test.user@example.com\",\n  \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "CU-02 Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Copy token from response into collection variable token. Admin endpoints require an Admin account.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test.user@example.com\",\n  \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "CU-03 Generate recommendations",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/recommendations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "recommendations"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"budget\": 100,\n  \"availableTimeHours\": 4,\n  \"company\": \"Pareja\",\n  \"numberOfPeople\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-04 List activities",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "CU-04 Get activity",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities/{{activityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities",
+            "{{activityId}}"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "CU-04 Create activity (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Picnic\",\n  \"description\": \"Picnic al aire libre\",\n  \"category\": \"Outdoor\",\n  \"costPerPerson\": 25,\n  \"durationMinutes\": 90,\n  \"suitableCompanies\": \"Pareja,Amigos,Familia\",\n  \"isActive\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-04 Update activity (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities/{{activityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities",
+            "{{activityId}}"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Picnic\",\n  \"description\": \"Picnic actualizado\",\n  \"category\": \"Outdoor\",\n  \"costPerPerson\": 25,\n  \"durationMinutes\": 90,\n  \"suitableCompanies\": \"Pareja,Amigos,Familia\",\n  \"isActive\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-04 Soft delete activity (Admin)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities/{{activityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities",
+            "{{activityId}}"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-05 Add favorite",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/favorites",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "favorites"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"activityId\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-05 List favorites",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/favorites",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "favorites"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-05 Remove favorite",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/favorites/{{activityId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "favorites",
+            "{{activityId}}"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-06 Recommendation history",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/recommendations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "recommendations"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-06 Recommendation detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/recommendations/{{recommendationId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "recommendations",
+            "{{recommendationId}}"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-07 Rate recommended activity",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities/{{activityId}}/rating",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities",
+            "{{activityId}}",
+            "rating"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"activityId\": 1,\n  \"score\": 5\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-07 Get average rating",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/activities/{{activityId}}/rating",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "activities",
+            "{{activityId}}",
+            "rating"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "CU-08 List users (Admin)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-08 Update user role (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/{{userId}}/role",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "{{userId}}",
+            "role"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"role\": \"Admin\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CU-08 Update user status (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/{{userId}}/status",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "{{userId}}",
+            "status"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isActive\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
