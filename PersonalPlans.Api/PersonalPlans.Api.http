@@ -1,0 +1,6 @@
+@PersonalPlans.Api_HostAddress = http://localhost:5002
+
+GET {{PersonalPlans.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
