@@ -36,7 +36,7 @@ public class PersonalPlansContext : DbContext
             entity.HasIndex(u => u.Email).IsUnique();
             entity.Property(u => u.Email).HasMaxLength(255).IsRequired();
             entity.Property(u => u.Name).HasMaxLength(150).IsRequired();
-            entity.Property(u => u.Password).IsRequired();
+            entity.Property(u => u.Password).HasColumnName("PasswordHash").IsRequired();
             entity.Property(u => u.Role).HasMaxLength(30).IsRequired();
         });
 
