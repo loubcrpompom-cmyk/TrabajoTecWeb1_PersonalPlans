@@ -6,3 +6,4 @@ obj/
 .vscode/
 /DS_Store
 Thumbs.db
+*.zip
